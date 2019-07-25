@@ -1,0 +1,31 @@
+<!doctype HTML>
+<html>
+<script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
+<script src="https://raw.githack.com/jeromeetienne/AR.js/1.7.1/aframe/build/aframe-ar.js"></script>
+<script src="https://unpkg.com/aframe-animation-component@^5.1.2/dist/aframe-animation-component.min.js"></script>
+<script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+<script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+
+  <body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs>
+      <a-assets>
+        <a-asset-item id="letters" src="models/tcc_car/letters.glb" ></a-asset-item>
+        <a-asset-item id="ring" src="models/tcc_car/ring.glb" ></a-asset-item>
+      </a-assets>
+
+      <a-marker preset="hiro">
+        <a-mixin id="orbit" animation="property: rotation; loop: true; to: 0 360 360; dur: 1000; easing: linear;"></a-mixin>
+        <a-mixin id="rotation2" animation="property: rotation; loop: true; from:  -90 0 0; to: -90 -360 0; dur: 3500; easing: linear;"></a-mixin>
+        <a-mixin id="bob" animation="property: position; loop: true; from:  0 0 -.15; to: 0 0 .15; dur: 2000; easing: easeOutElastic;"></a-mixin>
+
+
+
+        <a-entity gltf-model="letters" rotation="-90 0 0" position="0 0 0"  scale=".1 .1 .1" mixin="rotation2"></a-entity>
+          <a-entity gltf-model="#ring" rotation="-90 0 0" position="0 0 0"  scale=".1 .1 .1" mixin="rotation2"></a-entity>
+
+
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
